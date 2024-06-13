@@ -11,12 +11,11 @@ from set2 import find_xor_combination
 # How? Devise some method for "scoring" a piece of English plaintext. Character frequency is a good metric. Evaluate each output and choose the one with the best score.
 
 def which_char_has_this_string_been_xored_against(input_string_hex):
-  print(f'input is {input_string_hex}')
   best_result = ''
   best_space_count = 0
   best_char = ''
   for ascii_char in string.ascii_letters:
-    # make your ASCII to hex string here with char c
+    # make your ASCII to hex string 
     ascii_string_hex = ascii_char_to_hex_string(ascii_char, (len(input_string_hex) // 2)) 
     result_string = find_xor_combination(input_string_hex, ascii_string_hex)
     # now encode the hex to utf-8
@@ -29,7 +28,6 @@ def which_char_has_this_string_been_xored_against(input_string_hex):
     if space_count > best_space_count:
       best_result = result_string
       best_char = ascii_char
-  print(f"we're done, best result is: {bytes.fromhex(best_result)}")
   return best_char
 
 def ascii_char_to_hex_string(ascii_char, result_string_len):

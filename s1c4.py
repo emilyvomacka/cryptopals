@@ -15,7 +15,6 @@ def find_single_char_xor_encrypted_string():
       xor_result_string = ''.join([chr(i) for i in xor_result])
       common_letter_count = sum([xor_result_string.count(letter) for letter in common_letters])
       if (common_letter_count > highest_common_letter_count):
-        print(f'SET 4 FOUND NEW HIGHEST SCORING STRING {xor_result_string}')
         highest_common_letter_count = common_letter_count
         encoded_string = xor_result_string
   return encoded_string

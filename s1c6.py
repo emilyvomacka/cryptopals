@@ -24,11 +24,10 @@ def find_low_ham_key_lengths(input_str):
   for key_length in key_range: 
     hamming_distances.append((key_length, find_normalized_ham(input_bytes, key_length)))
   hamming_distances.sort(key=lambda item: item[1])
-  print(f'sorted hamming distances are: {hamming_distances}')
+  # print(f'sorted hamming distances are: {hamming_distances}')
   return hamming_distances
 
-
-# let's get the first three hamming distances and average them 
+# Get the first three hamming distances and average them 
 def find_normalized_ham(input_bytes, key_length):
   chunk_1 = input_bytes[:key_length] 
   hams = [hamming_distance(chunk_1, input_bytes[key_length:2*key_length]), 
@@ -42,7 +41,6 @@ def find_normalized_ham(input_bytes, key_length):
 def split_chunks(input_bin, chunk_size):
   """Split an iterable into chunks of a specified size"""
   number_of_chunks = len(input_bin) // chunk_size
-  # print(f'chunk_size is {chunk_size}, len of input_bin is {len(input_bin)}, number of chunks is {number_of_chunks}')
   result = []
   for i in range(0, number_of_chunks):
     index = i * chunk_size
@@ -84,13 +82,12 @@ def decrypt_input(input_bytes, key_str):
   return xor_result_str
 
 def vigenere():
-  input_txt = open('set1/s1c6_input.txt', 'r').read()
+  input_txt = open('s1c6_input.txt', 'r').read()
   key_rank = find_low_ham_key_lengths(input_txt)
   results_for_top_key_lengths = []
   input_bytes = b64decode(input_txt)
   for i in range(0,3):
     results_for_top_key_lengths.append(find_best_key_and_score(key_rank[i][0], input_bytes))
   results_for_top_key_lengths.sort(key=lambda item: item['score'], reverse=True)
-  print(decrypt_input(input_bytes, results_for_top_key_lengths[0]['key']))
 
 vigenere()
