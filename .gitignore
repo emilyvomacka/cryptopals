@@ -1,2 +1,4 @@
 venv/
 __pycache__.*
+set2/__pycache*
+set1/encoding.py
